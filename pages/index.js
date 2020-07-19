@@ -1,209 +1,120 @@
-import Head from 'next/head'
+import Link from 'next/link'
+import Layout from '../components/Layout'
 
 export default function Home() {
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <Layout title="Home">
+      <header className="header" id="home">
+        <section className="container">
+          <svg className="img" role="img" xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" viewBox="0 0 24 24" aria-labelledby="hashIconTitle" stroke="#1da1f2" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="#1da1f2">
+            <path d="M11 3L5 21M19 3L13 21M3 16L19 16M5 8L21 8"/>
+          </svg>
+          <h1 className="title">Hashtagged Tweet</h1>
+          <p className="description" data-version="Currently">Tweet with favorite hashtags.</p>
+          <Link href="/app/">
+            <a className="button">Getting Started</a>
+          </Link>
+        </section>
+      </header>
+      <section className="container">
+        <div className="media">
+          <div className="text">
+            <h3>Save Hashtags</h3>
+            <p>よく使うハッシュタグを保存します</p>
+          </div>
+          <img src="https://i.gyazo.com/6fc699878901a552b19d26891765e942.png" width="200" height="216" alt=""/>
         </div>
-      </main>
-
+      </section>
+      <section className="container">
+        <div className="media reverse">
+          <div className="text">
+            <h3>Share URL with App</h3>
+            <p>シェアするとき、このアプリを指定します</p>
+          </div>
+          <img src="https://i.gyazo.com/8e94a1853f2b6a0b603fc18349635dba.png" width="200" height="295" alt=""/>
+        </div>
+      </section>
+      <section className="container">
+        <div className="media">
+          <div className="text">
+            <h3>Share with Hashtags</h3>
+            <p>タグを選択してシェアすることができます</p>
+          </div>
+          <img src="https://i.gyazo.com/691779f272fb73274be62b793e318305.png" width="200" height="318" alt=""/>
+        </div>
+      </section>
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
+        <p><i>Tomoyuki kashiro all right reserved.</i></p>
       </footer>
-
       <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
+        section.container {
+          padding-bottom: 7.5rem;
+          padding-top: 7.5rem;
+          max-width: 80rem;
+        }
+
+        .media {
           display: flex;
           flex-direction: column;
-          justify-content: center;
           align-items: center;
         }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+        .media .text {
+          text-align:center;
         }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        .media img {
+          border: 1px solid #ccc;
         }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
+        
+        @media (min-width: 40rem) {
+          .media {
+            justify-content: center;
+          }
+          .media:not(.reverse) {
+            flex-direction: row;
+          }
+          .media:not(.reverse) .text {
+            margin-right: 5rem;
+          }
+          .media.reverse {
+            flex-direction: row-reverse;
+          }
+          .media.reverse img {
+            margin-right: 5rem;
           }
         }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
+        
+        footer {
+          text-align:center;
+          padding-top: 8rem;
+          padding-bottom: 5rem;
         }
-
-        * {
-          box-sizing: border-box;
+        
+        .header {
+          background-color: #f4f5f6;
+        }
+        .header + section {
+          border-top: 0;
+        }
+        .header .container {
+          border-top: 0;
+          padding-bottom: 7.5rem;
+          padding-top: 7.5rem;
+          position: relative;
+          text-align: center;
+        }
+        .header .img {
+           margin-bottom: 2rem;
+        }
+        .header .title {
+          font-family: Gotham Rounded A,Gotham Rounded B,Helvetica Neue,Arial,sans-serif;
+        }
+        .header .button {
+          margin-bottom: 4rem;
+          margin-top: 2rem;
+          background-color: #1da1f2;
+          border-color: #1da1f2;
         }
       `}</style>
-    </div>
+    </Layout>
   )
 }

@@ -1,0 +1,31 @@
+{
+  "short_name": "# Tweet",
+  "name": "Hashtagged Tweet",
+  "description": "Tweet with favorite hashtags",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "share_target": {
+    "action": "/app",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "start_url": "/app?source=pwa",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/app",
+  "theme_color": "#1da1f2"
+}

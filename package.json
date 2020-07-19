@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "next build && next export",
+    "start": "next start",
+    "deploy": "gsutil rsync -r out gs://hashtagged-tweet.tomoyukikashiro.me"
   },
   "dependencies": {
     "next": "9.4.4",
+    "next-offline": "^5.0.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-no-ssr": "^1.1.0",
+    "sass": "^1.26.10"
   }
 }
