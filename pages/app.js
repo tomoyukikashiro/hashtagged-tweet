@@ -12,10 +12,18 @@ const TagSelectionForm = dynamic(
 const getSharedInfo = () => {
   if(!process.browser) return {}
   const parsedUrl = new URL(window.location);
+  const urlRegex = /(?<url>https?:\/\/\S+)/
+  const title = parsedUrl.searchParams.get('title');
+  let text = parsedUrl.searchParams.get('text');
+  const url = parsedUrl.searchParams.get('url');
+  const matchedUrlInText = text.match(urlRegex)?.groups?.url
+  if (matchedUrlInText) {
+    text = text.replace(matchedUrlInText, '')
+  }
   return {
-    title: parsedUrl.searchParams.get('title'),
-    text: parsedUrl.searchParams.get('text'),
-    url: parsedUrl.searchParams.get('url')
+    title,
+    text,
+    url: (url || matchedUrlInText)
   }
 }
 
@@ -30,14 +38,18 @@ export default function App() {
   }
   const tweetWithTag = tags => {
     if(!tags.length) return
-    const url = new URL('https://twitter.com/intent/tweet')
-    url.searchParams.append('hashtags', tags.join(','))
-    const sharedInfo = getSharedInfo()
-    if (Object.values(sharedInfo).length) {
-      url.searchParams.append('url', sharedInfo.text)
-      url.searchParams.append('text', sharedInfo.title)
+    const twUrl = new URL('https://twitter.com/intent/tweet')
+    const { title, text, url } = getSharedInfo()
+    twUrl.searchParams.append('hashtags', tags.join(','))
+    url && twUrl.searchParams.append('url', url)
+
+    // text or title
+    if (title) {
+      twUrl.searchParams.append('text', title)
+    } else if (text) {
+      twUrl.searchParams.append('text', text)
     }
-    location.href = url.toString()
+    location.href = twUrl.toString()
   }
   const sharedInfo = getSharedInfo()
   return (
