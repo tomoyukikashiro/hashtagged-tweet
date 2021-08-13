@@ -9,7 +9,7 @@
     "deploy": "gsutil rsync -r out gs://hashtagged-tweet.tomoyukikashiro.me"
   },
   "dependencies": {
-    "next": "9.4.4",
+    "next": "11.1.0",
     "next-offline": "^5.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
